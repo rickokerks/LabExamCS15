@@ -36,14 +36,15 @@ while flag == 1:
 
     elif input_item in items:
         print(f"How many {input_item} do you want to buy?")
-        quantity = input()
-        if not isinstance(quantity, int):
-            print("-----------------Please enter an integer to indicate an amount.-----------------")
-        
-        elif quantity > 0:
-            cart.append((input_item, quantity))
-            print(f"{quantity} {input_item}(s) added to your cart.")
-            print(f"Your cart now contains:")
-            print(cart)
-        else:
-            print("Please enter a valid quantity.")
+        try:
+            quantity = int(input())
+            
+            if quantity > 0:
+                cart.append((input_item, quantity))
+                print(f"{quantity} {input_item}(s) added to your cart.")
+                print(f"Your cart now contains:")
+                print(cart)
+            else:
+                print("Please enter a valid quantity.")
+        except ValueError:
+             print("-----------------Please enter an integer to indicate an amount.-----------------")
