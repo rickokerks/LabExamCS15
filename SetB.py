@@ -71,7 +71,46 @@ university_programs = [
     {"program_name": "Game Development", "num_students": 160}
 ]
 
+def program():
+    matches = []
+    while not matches:
+        programI = input("Enter progam:").strip().lower()
+        matches = [program for program in university_programs if programI in program["program_name"].lower()]
+        if not matches:
+            print('Program not found!')
+            
+        if matches:
+            print('-------------Program Details-----------')
+            print("Program: BS in " + str(matches[0]["program_name"]))
+            print("Enrolled: " + str(matches[0]['num_students']))
+            print('--------------------------------------')
 
+
+def enroll():
+    loop = True
+    while loop:
+        firstname = input("First name: ")
+        lastname = input("Last name: ")
+        matches = []
+
+        while not matches:
+            course = input("Course program: ").strip().lower()
+            matches = [program for program in university_programs if course in program['program_name'].lower()]
+            if not matches:
+                print('Invalid program!')
+                
+            if matches: 
+                numStudents = matches[0]['num_students'] + 1
+                matches[0]['num_students'] = numStudents
+                print('Successfully enrolled with BS in ' + str(matches[0]['program_name']))
+                if numStudents == 1:
+                    print(str(matches[0]['num_students']) + " student is currently enrolled.")
+                else:
+                    print(str(matches[0]['num_students']) + " students are currently enrolled.")
+                
+            conEnroll = input("Do you want to enroll more? [Y|N]").strip().lower()
+        if conEnroll == "n":
+            break
 
 
 loop = True
@@ -82,9 +121,7 @@ while loop:
     print("[2] Enroll")
     print("[3] Exit")
 
-    program()
-
-    choice = input()
+    choice = int(input())
 
     match choice:
         case 1:
@@ -99,37 +136,4 @@ while loop:
     
 
 
-    conEnroll = input("Do you want to enroll? [Y|N]").strip().lower()
-    if conEnroll == "n":
-        break
-
-
-def program():
-    matches = []
-    programI = input("Enter progam:")
-    matches = [program for program in university_programs if programI in program["program_name"].lower()]
-    if matches:
-        print("Program: " + str(matches[0]["program_name"]))
-        print("Enrolled: " + str(matches[0]['num_students']))
-
-def enroll():
-    firstname = input("First name: ")
-    lastname = input("Last name: ")
-    matches = []
-
-    while not matches:
-        course = input("Course program: ").strip().lower()
-        matches = [program for program in university_programs if course in program['program_name'].lower()]
-        if not matches:
-            print('Invalid program!')
-        
-    if matches: 
-        numStudents = matches[0]['num_students'] + 1
-        matches[0]['num_students'] = numStudents
-        print('Successfully enrolled with BS in ' + str(matches[0]['program_name']))
-        if numStudents == 1:
-            print(str(matches[0]['num_students']) + " student is currently enrolled.")
-        else:
-            print(str(matches[0]['num_students']) + " students are currently enrolled.")
-        
-    
+   
