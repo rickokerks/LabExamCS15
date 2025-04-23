@@ -5,7 +5,6 @@
 
 transactions = []
 
-
 def load():
     loop = True
     while loop:
@@ -21,10 +20,9 @@ def load():
         if con == 'n':
             break
 
-
 def details():
     print("")
-    print("[--------NUMBER DETAILS-------]")
+    print("[--------BALANCE DETAILS-------]")
     print("")
     numbertot = input("Enter mobile number: ")
     total = 0
@@ -36,14 +34,9 @@ def details():
             print("Transaction " + str(tranNUm) + ": ₱" + str(transaction[1]))
             total += transaction[1]
 
-    print("Total loaded: ₱" + str(total))
+            print("")
 
-# def history():
-#     numberhis = input("Enter number: ")
-#     print("Transaction hisory of" + str(numberhis))
-#     for transaction in transactions:
-#         if transaction[0] == numberhis:
-#             print("Load: " + str(transaction[1]))
+    print("Total load amount: ₱" + str(total))
 
 looping = True
 
@@ -52,7 +45,7 @@ while looping:
     print("[-----CHARMELLE LOADMAXX-----]")
     print("")
     print("[1]Buy Load")
-    print("[2]Number details")
+    print("[2]Balance Details")
     print("[3]Exit")
     inputChoice = int(input())
 
